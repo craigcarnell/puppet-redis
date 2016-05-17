@@ -33,4 +33,5 @@ class redis::params {
   $redis_lua_time_limit      = 0
   $create_default_instance   = true
   $redis_unixsocket = undef
+  $redis_protected_mode = 'yes'
 }

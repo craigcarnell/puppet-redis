@@ -90,9 +90,10 @@ class redis (
   $redis_group = $redis::params::redis_group,
   $redis_port = $redis::params::redis_port,
   $redis_bind_address = $redis::params::redis_bind_address,
+  $redis_timeout = $redis::params::redis_timeout,
   $redis_max_memory = $redis::params::redis_max_memory,
   $redis_max_clients = $redis::params::redis_max_clients,
-  $redis_timeout = $redis::params::redis_timeout,
+  $redis_protected_mode = $redis::params::redis_protected_mode,
   $redis_loglevel = $redis::params::redis_loglevel,
   $redis_databases = $redis::params::redis_databases,
   $redis_slowlog_log_slower_than = $redis::params::redis_slowlog_log_slower_than,
@@ -111,18 +112,19 @@ class redis (
   # Install default instance
   if($create_default_instance) {
     redis::instance { 'redis-default':
-	    redis_port                    => $redis_port,
-	    redis_bind_address            => $redis_bind_address,
-	    redis_max_memory              => $redis_max_memory,
-	    redis_max_clients             => $redis_max_clients,
-	    redis_timeout                 => $redis_timeout,
-	    redis_loglevel                => $redis_loglevel,
-	    redis_databases               => $redis_databases,
-	    redis_slowlog_log_slower_than => $redis_slowlog_log_slower_than,
-	    redis_slowlog_max_len         => $redis_slowlog_max_len,
-	    redis_password                => $redis_password,
-	    redis_saves                   => $redis_saves,
-	  }
+      redis_port                    => $redis_port,
+      redis_bind_address            => $redis_bind_address,
+      redis_protected_mode          => $redis_protected_mode,
+      redis_max_memory              => $redis_max_memory,
+      redis_max_clients             => $redis_max_clients,
+      redis_timeout                 => $redis_timeout,
+      redis_loglevel                => $redis_loglevel,
+      redis_databases               => $redis_databases,
+      redis_slowlog_log_slower_than => $redis_slowlog_log_slower_than,
+      redis_slowlog_max_len         => $redis_slowlog_max_len,
+      redis_password                => $redis_password,
+      redis_saves                   => $redis_saves,
+    }
   }
 
   File {
